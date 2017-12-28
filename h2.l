@@ -7,12 +7,13 @@
 Number     [0-9][0-9]*
 
 %%
-[\t]+        {}
 {Number}     { yylval = atoi(yytext); return(Number);}
 "+"          { return(Add);}
 "-"          { return(Sub);}
 "*"          { return(Mul);}
 "/"          { return(Div);}
+"("          { return(LB);}
+")"          { return(RB);}
 \n           { return '\n'; }
 .            { return yytext[0]; }
 %%

@@ -1,4 +1,4 @@
-%token Number Add Sub Mul Div
+%token Number Add Sub Mul Div LB RB
 %{
     #include <stdio.h>
     extern void yyerror(char*); 
@@ -12,7 +12,7 @@
 statement : expression '\n'         { printf("Ans is %d\n\n========\n", $1); }
           | statement expression '\n'    { printf("Ans is %d\n\n========\n", $2); }
           ;
-expression : '(' expression ')'      { $$ = $2; }
+expression : LB expression RB      { $$ = $2; }
            | expression Add expression     { printf("%d add %d is %d\n", $1, $3, $$ = $1 + $3); }
            | expression Sub expression     { printf("%d sub %d is %d\n", $1, $3, $$ = $1 - $3); }
            | expression Mul expression     { printf("%d mul %d is %d\n", $1, $3, $$ = $1 * $3); }
