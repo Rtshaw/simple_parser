@@ -14,6 +14,8 @@ Number     [0-9][0-9]*
 "/"          { return(Div);}
 "("          { return(LB);}
 ")"          { return(RB);}
-\n           { return '\n'; }
+" "          {}
+\r\n         { return(FD); }
+\n           { return(FD); }
 .            { return yytext[0]; }
 %%
